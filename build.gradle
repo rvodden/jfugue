@@ -41,9 +41,11 @@ subprojects {
         }
     }
 
+    compileJava {
+        options.encoding = "UTF-8"
+    }
+
     jar {
-
-
         baseName = 'jfugue'
 
         if ( project.name == "jfugue" ) {

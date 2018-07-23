@@ -33,22 +33,22 @@ import javax.sound.midi.MidiUnavailableException;
  *
  */
 public class UnknownTokenTest {
-	private Player player;
+	private StaccatoParser parser;
 	
 	@Before
 	public void setup() throws MidiUnavailableException {
-		this.player = new Player();
+		this.parser = new StaccatoParser();
 	}
 	
-    @Test
-    public void testDefaultBehaviorForUnknownToken() {
-    	player.play("UNKNOWN");
-    }
+	@Test
+	public void testDefaultBehaviorForUnknownToken() {
+		parser.parse("UNKNOWN");
+	}
 
-    @Test(expected=ParserException.class) 
-    public void testExceptionOnUnknownToken() {
-    	player.getStaccatoParser().setThrowsExceptionOnUnknownToken(true);
-    	player.play("UNKNOWN");
-    }
+	@Test(expected=ParserException.class)
+	public void testExceptionOnUnknownToken() {
+		parser.setThrowsExceptionOnUnknownToken(true);
+		parser.parse("UNKNOWN");
+	}
 
 }

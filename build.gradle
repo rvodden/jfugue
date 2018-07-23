@@ -13,6 +13,7 @@ buildscript {
 
 allprojects {
     repositories {
+        jcenter()
         mavenLocal()
         mavenCentral()
     }
@@ -71,6 +72,7 @@ project(':jfugue') {
 
         testImplementation 'junit:junit:4.12'
         testImplementation 'org.hamcrest:hamcrest-core:1.3'
+        testImplementation 'org.mockito:mockito-core:2.+'
     }
 
 }

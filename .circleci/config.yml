@@ -42,8 +42,7 @@ jobs:
             - ~/repo/jfugue/jfugue/build/test-results
 
       - store_artifacts:
-          paths:
-            - ~/repo/jfugue/jfugue/build/libs
+          paths: ~/repo/jfugue/jfugue/build/libs
 
 
       # run tests!

@@ -39,7 +39,7 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # run tests!
-      - run: ./gradlew test jar
+      - run: ./gradlew test jar -Ptest.skipAudioTests
 
       - store_test_results:
           paths:

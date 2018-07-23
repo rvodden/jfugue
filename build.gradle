@@ -66,7 +66,6 @@ subprojects {
 }
 
 project(':jfugue') {
-
     dependencies {
         implementation 'com.io7m.xom:xom:1.2.10'
 
@@ -75,6 +74,12 @@ project(':jfugue') {
         testImplementation 'org.mockito:mockito-core:2.+'
     }
 
+    test {
+        if(project.hasProperty('test.skipAudioTests')) {
+            exclude '**/TemporalPLPTest.class'
+            exclude '**/PlayerTest.class'
+        }
+    }
 }
 
 project(':demo') {

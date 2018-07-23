@@ -39,7 +39,7 @@ public class ManagedPlayer implements EndOfTrackListener
 	private boolean finished;
 	private boolean paused;
 
-    private CopyOnWriteArrayList<ManagedPlayerListener> playerListeners;
+	private CopyOnWriteArrayList<ManagedPlayerListener> playerListeners;
     
 	public ManagedPlayer() {
     	playerListeners = new CopyOnWriteArrayList<ManagedPlayerListener>();
@@ -47,6 +47,7 @@ public class ManagedPlayer implements EndOfTrackListener
     		common = SequencerManager.getInstance();
     	} catch (MidiUnavailableException e) {
     		Logger.getLogger("org.jfugue").severe(e.getLocalizedMessage());
+        Logger.getLogger("org.jfugue").severe(e.getStackTrace().toString());
     	}
     }
     

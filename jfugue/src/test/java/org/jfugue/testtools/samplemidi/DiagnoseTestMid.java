@@ -19,6 +19,7 @@
 
 package org.jfugue.testtools.samplemidi;
 
+import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Sequence;
 
 import org.jfugue.devtools.DiagnosticParserListener;
@@ -30,7 +31,7 @@ import org.junit.Ignore;
 @Ignore
 public class DiagnoseTestMid 
 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 		DiagnoseTestMid test = new DiagnoseTestMid();
 		test.diagnose(CreateTestMid.createSoloTest());
 		test.diagnose(CreateTestMid.createDuetTest());
@@ -41,7 +42,7 @@ public class DiagnoseTestMid
 	private DiagnosticParserListener listener;
 	private MidiParser parser;
 	
-	public DiagnoseTestMid() {
+	public DiagnoseTestMid() throws MidiUnavailableException {
 		player = new Player();
 		listener = new DiagnosticParserListener();
 		parser = new MidiParser();

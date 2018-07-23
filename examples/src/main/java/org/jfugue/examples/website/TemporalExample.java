@@ -5,11 +5,13 @@ import org.jfugue.player.Player;
 import org.jfugue.temporal.TemporalPLP;
 import org.staccato.StaccatoParser;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class TemporalExample {
     private static final String MUSIC = "C D E F G A B";  // Feel free to put your own music here to experiment!
     private static final long TEMPORAL_DELAY = 500;       // Feel free to put your own delay here to experiment!
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MidiUnavailableException {
         // Part 1. Parse the original music
         StaccatoParser parser = new StaccatoParser();
         TemporalPLP plp = new TemporalPLP();

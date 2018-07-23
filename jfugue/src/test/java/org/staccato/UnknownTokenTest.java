@@ -24,6 +24,8 @@ import org.jfugue.player.Player;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.sound.midi.MidiUnavailableException;
+
 /**
  * JFugue and Staccato should successfully ignore unknown tokens.
  * 
@@ -34,7 +36,7 @@ public class UnknownTokenTest {
 	private Player player;
 	
 	@Before
-	public void setup() {
+	public void setup() throws MidiUnavailableException {
 		this.player = new Player();
 	}
 	

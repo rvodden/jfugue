@@ -4,8 +4,10 @@ import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.staccato.ReplacementMapPreprocessor;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class SolfegeReplacementMapDemo {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 		Player player = new Player();
 		ReplacementMapPreprocessor rmp = ReplacementMapPreprocessor.getInstance();
 		rmp.setReplacementMap(new SolfegeReplacementMap()).setRequireAngleBrackets(false);

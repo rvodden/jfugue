@@ -5,6 +5,8 @@ import org.jfugue.theory.Chord;
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.theory.Note;
 
+import javax.sound.midi.MidiUnavailableException;
+
 /*	Introduction to Chord Progressions
 
 	It's easy to create a Chord Progression in JFugue. You can then play it,
@@ -13,7 +15,7 @@ import org.jfugue.theory.Note;
 
 public class IntroToChordProgressions {
 
-   public static void main(String[] args){
+   public static void main(String[] args) throws MidiUnavailableException {
 
 	  ChordProgression cp = new ChordProgression("I IV V");
 

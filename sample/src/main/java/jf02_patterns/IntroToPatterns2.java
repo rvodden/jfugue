@@ -3,6 +3,8 @@ package jf02_patterns;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 
+import javax.sound.midi.MidiUnavailableException;
+
 /*	Introduction to Patterns, Part 2
 
 	Voice and instruments for a pattern can also be set through the API.
@@ -12,7 +14,7 @@ import org.jfugue.player.Player;
 
 public class IntroToPatterns2 {
 
-   public static void main(String[] args){
+   public static void main(String[] args) throws MidiUnavailableException {
 
 	  Pattern p1 = new Pattern("Eq Ch. | Eq Ch. | Dq Eq Dq Cq").setVoice(0)
 															   .setInstrument("Piano");

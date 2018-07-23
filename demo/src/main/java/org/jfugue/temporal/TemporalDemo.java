@@ -24,6 +24,8 @@ import org.jfugue.devtools.DiagnosticParserListener;
 import org.jfugue.player.Player;
 import org.staccato.StaccatoParser;
 
+import javax.sound.midi.MidiUnavailableException;
+
 /**
  *  This demo illustrates how to use the Temporal classes to get MIDI events in time-based order,
  *  and how to use time-ordered MIDI at the same time as calling Player's delayPlay to create a stream
@@ -37,7 +39,7 @@ public class TemporalDemo {
 	private static final String MUSIC = "C D E F G A B";  // Feel free to put your own music here to experiment!
 	private static final long TEMPORAL_DELAY = 500;       // Feel free to put your own delay here to experiment!
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 		// In this first block of code, we use the TemporalPLP class 
 		// as a ParserListener. The StaccatoParser will parse the 
 		// music, and the TemporalPLP class will listen and construct

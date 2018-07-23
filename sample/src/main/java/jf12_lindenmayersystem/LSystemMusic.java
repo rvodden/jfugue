@@ -4,6 +4,7 @@ import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.staccato.ReplacementMapPreprocessor;
 
+import javax.sound.midi.MidiUnavailableException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +16,7 @@ import java.util.Map;
 */
 public class LSystemMusic {
 
-   public static void main(String[] args){
+   public static void main(String[] args) throws MidiUnavailableException {
 
 	  // Specify the transformation rules for this Lindenmayer system
 	  Map rules = new HashMap() {{

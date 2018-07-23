@@ -21,8 +21,10 @@ package java.org.jfugue.examples.website;
 
 import org.jfugue.player.Player;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class HelloWorld4 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 		Player player = new Player();
 		player.play("T[Moderato]  V1 I[Piano] (E+A)q  (E+A)q  (E+A)q  Fi. C5s | (E+A)q  Fi. C5s (E+A)h  " + 
                     "             V2 I[Piano] (A3+C)q (A3+C)q (A3+C)q F3minq  | (A3+C)q F3minq  (A3+C)h ");

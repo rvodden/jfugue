@@ -4,6 +4,7 @@ import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 import org.jfugue.theory.ChordProgression;
 
+import javax.sound.midi.MidiUnavailableException;
 import java.io.IOException;
 
 /*	Twelve-Bar Blues in Two Lines of Code
@@ -21,7 +22,7 @@ import java.io.IOException;
 
 public class TwelveBarBlues {
 
-   public static void main(String[] args) throws IOException{
+   public static void main(String[] args) throws IOException, MidiUnavailableException {
 
 	  Pattern pattern = new ChordProgression("I IV V").distribute("7%6")
 													  .allChordsAs("$0 $0 $0 $0 $1 $1 $0 $0 $2 $1 $0 $0")

@@ -24,8 +24,10 @@ import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 import org.jfugue.theory.ChordProgression;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class IntroductionToRhythms2 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 		// Create a rhythm
 		Rhythm rhythm = new Rhythm();
         rhythm.addLayer("O..oO...O..oOO..");

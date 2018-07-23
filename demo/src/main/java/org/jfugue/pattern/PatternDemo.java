@@ -22,8 +22,10 @@ package org.jfugue.pattern;
 import org.jfugue.demo.DemoPrint;
 import org.jfugue.player.Player;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class PatternDemo {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 		Player player = new Player();
 		
 		// A Pattern contains a Staccato music string. 

@@ -22,8 +22,10 @@ package org.staccato;
 import org.jfugue.player.Player;
 import org.staccato.maps.CarnaticReplacementMap;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class CarnaticReplacementMapDemo {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 		ReplacementMapPreprocessor.getInstance().setReplacementMap(new CarnaticReplacementMap());
 
 		Player player = new Player();

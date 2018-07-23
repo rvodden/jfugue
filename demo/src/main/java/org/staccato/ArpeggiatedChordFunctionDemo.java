@@ -23,9 +23,11 @@ import org.jfugue.player.Player;
 import org.staccato.functions.ArpeggiatedChordFunction;
 import org.staccato.functions.FunctionManager;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class ArpeggiatedChordFunctionDemo 
 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 		// Each function that is added to the ParserContext is essentially a singleton, since it keeps no state.
 		FunctionManager.getInstance().addPreprocessorFunction(ArpeggiatedChordFunction.getInstance());
 		

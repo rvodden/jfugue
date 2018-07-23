@@ -42,7 +42,7 @@ public class Player
 	private MidiParserListener midiParserListener;
 	private ManagedPlayer managedPlayer;
 	
-	public Player() {
+	public Player() throws MidiUnavailableException {
 		managedPlayer = new ManagedPlayer();
 		staccatoParser = new StaccatoParser();
 		midiParserListener = new MidiParserListener();

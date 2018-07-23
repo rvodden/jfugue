@@ -19,10 +19,11 @@
 
 package org.jfugue.player;
 
+import javax.sound.midi.MidiUnavailableException;
 import java.util.Map;
 
 public class DictionaryDemo {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 		Player player = new Player();
 		Map<String, Object> dictionary = player.getStaccatoParser().getContext().getDictionary();
 		dictionary.put("FOO", 9);

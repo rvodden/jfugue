@@ -22,8 +22,10 @@ package org.jfugue.theory;
 import org.jfugue.player.Player;
 import org.jfugue.theory.ChordProgression;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class ChordDemo {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 		Player player = new Player();
 		
 		/** This example plays four chords */

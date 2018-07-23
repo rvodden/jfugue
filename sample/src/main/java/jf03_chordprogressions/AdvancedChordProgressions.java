@@ -3,6 +3,8 @@ package jf03_chordprogressions;
 import org.jfugue.player.Player;
 import org.jfugue.theory.ChordProgression;
 
+import javax.sound.midi.MidiUnavailableException;
+
 /*	Advanced Chord Progressions
 
 	You can do some pretty cool things with chord progressions.
@@ -16,7 +18,8 @@ import org.jfugue.theory.ChordProgression;
 
 public class AdvancedChordProgressions {
 
-   public static void main(String[] args){
+   public static void main(String[] args) throws MidiUnavailableException
+	 {
 
 	  ChordProgression cp = new ChordProgression("I IV V");
 

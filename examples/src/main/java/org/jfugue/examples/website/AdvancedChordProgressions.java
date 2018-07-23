@@ -3,8 +3,10 @@ package java.org.jfugue.examples.website;
 import org.jfugue.player.Player;
 import org.jfugue.theory.ChordProgression;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class AdvancedChordProgressions {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws MidiUnavailableException {
     ChordProgression cp = new ChordProgression("I IV V");
 
     Player player = new Player();

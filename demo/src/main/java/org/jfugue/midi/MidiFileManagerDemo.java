@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.sound.midi.InvalidMidiDataException;
+import javax.sound.midi.MidiUnavailableException;
 
 import org.jfugue.demo.DemoPrint;
 import org.jfugue.pattern.Pattern;
@@ -32,7 +33,7 @@ public class MidiFileManagerDemo {
 	public static String OUTPUT_FILENAME = "example.mid";
 	public static String INPUT_FILENAME = "example.mid";
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 
 		DemoPrint.start("Examples saving and loading MIDI files");
 				

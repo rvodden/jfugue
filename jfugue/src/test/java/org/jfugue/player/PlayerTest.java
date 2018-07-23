@@ -24,12 +24,14 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class PlayerTest {
 	@Before
 	public void setUp() { }
 	
 	@Test
-	public void testPlayerFinishes() {
+	public void testPlayerFinishes() throws MidiUnavailableException {
     	Player player = new Player();
     	player.play("Cq Cq Aq Bq Dq Gq");
     	assertTrue(true);

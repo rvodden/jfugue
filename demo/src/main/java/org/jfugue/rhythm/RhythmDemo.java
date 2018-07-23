@@ -22,8 +22,10 @@ package org.jfugue.rhythm;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class RhythmDemo {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 		
 		// In this first block of code, we create a single-layer Rhythm
 		// which will be played with a default kit. The o and O 

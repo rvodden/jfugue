@@ -5,6 +5,8 @@ import org.jfugue.player.Player;
 import org.jfugue.temporal.TemporalPLP;
 import org.staccato.StaccatoParser;
 
+import javax.sound.midi.MidiUnavailableException;
+
 /*	Anticipate Musical Events Before They Occur
 
   	You might imagine creating new types of ParserListeners,like an AnimationParserListener,
@@ -22,7 +24,7 @@ public class TemporalExample {
    private static final String MUSIC          = "C D E F G A B";
    private static final long   TEMPORAL_DELAY = 500;
 
-   public static void main(String[] args){
+   public static void main(String[] args) throws MidiUnavailableException {
 	  // Part 1. Parse the original music
 	  StaccatoParser parser = new StaccatoParser();
 	  TemporalPLP plp = new TemporalPLP();

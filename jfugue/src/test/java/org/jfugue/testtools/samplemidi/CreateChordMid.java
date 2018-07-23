@@ -21,12 +21,15 @@ package org.jfugue.testtools.samplemidi;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import org.jfugue.midi.MidiFileManager;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.pattern.PatternProducer;
 import org.jfugue.player.Player;
 import org.junit.Ignore;
+
+import javax.sound.midi.MidiUnavailableException;
 
 @Ignore
 public class CreateChordMid 
@@ -42,8 +45,14 @@ public class CreateChordMid
 	
 	private static Player player;
 	
-	static {
-		player = new Player();
+	static
+	{
+		try {
+			player = new Player();
+		} catch (MidiUnavailableException midiUnavailableException) {
+			Logger.getLogger("org.jfugue.testtools.samplemidi.CreateChordMid").severe(midiUnavailableException.getLocalizedMessage());
+			throw new RuntimeException(midiUnavailableException);
+		}
 	}
 	
 	private static void save(PatternProducer patternProducer, String filename)

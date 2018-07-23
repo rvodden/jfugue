@@ -22,8 +22,10 @@ package org.staccato;
 import org.jfugue.demo.DemoPrint;
 import org.jfugue.player.Player;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class StaccatoDemo {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 		Player player = new Player();
 		
 		// This is one of the simplest Staccato strings that you can play.

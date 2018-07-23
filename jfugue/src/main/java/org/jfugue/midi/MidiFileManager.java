@@ -29,6 +29,7 @@ import java.net.URL;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Sequence;
 
 import org.jfugue.pattern.Pattern;
@@ -53,12 +54,12 @@ public class MidiFileManager
 	    return MidiSystem.getSequence(file);
 	}
 	
-	public static void savePatternToMidi(PatternProducer patternProducer, OutputStream out) throws IOException {
+	public static void savePatternToMidi(PatternProducer patternProducer, OutputStream out) throws IOException, MidiUnavailableException {
 		MidiFileManager.save(new Player().getSequence(patternProducer), out);
 	}
 
 	/** Convenience method to make it easier to save a file */ 
-	public static void savePatternToMidi(PatternProducer patternProducer, File file) throws IOException {
+	public static void savePatternToMidi(PatternProducer patternProducer, File file) throws IOException, MidiUnavailableException {
 		MidiFileManager.savePatternToMidi(patternProducer, new FileOutputStream(file));
 	}
 	

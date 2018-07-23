@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
 
 /*	Connecting Any Parser to Any ParserListener
 
@@ -23,7 +24,7 @@ import javax.sound.midi.MidiSystem;
 
 public class ParserDemo {
 
-   public static void main(String[] args) throws InvalidMidiDataException, IOException{
+   public static void main(String[] args) throws InvalidMidiDataException, IOException, MidiUnavailableException {
 
 	  String fileName = "PUT A MIDI FILE HERE";
 	  MidiParser parser = new MidiParser();

@@ -3,6 +3,8 @@ package jf05_rhythms;
 import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 
+import javax.sound.midi.MidiUnavailableException;
+
 /*	Advanced Rhythms
 
 	Through the Rhythm API, you can specify a variety of alternate layers that
@@ -12,7 +14,7 @@ import org.jfugue.rhythm.Rhythm;
 
 public class AdvancedRhythms {
 
-   public static void main(String[] args){
+   public static void main(String[] args) throws MidiUnavailableException {
 
 	  Rhythm rhythm = new Rhythm() //
 		.addLayer("O..oO...O..oOO..") // This is Layer 0

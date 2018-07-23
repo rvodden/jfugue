@@ -5,6 +5,8 @@ import org.jfugue.player.Player;
 import org.staccato.ReplacementMapPreprocessor;
 import org.staccato.maps.SolfegeReplacementMap;
 
+import javax.sound.midi.MidiUnavailableException;
+
 /*	Use"Replacement Maps"to Play Solfege
 
   	JFugue comes with a SolfegeReplacementMap,which means you can program music using
@@ -16,7 +18,7 @@ import org.staccato.maps.SolfegeReplacementMap;
 
 public class SolfegeReplacementMapDemo {
 
-   public static void main(String[] args){
+   public static void main(String[] args) throws MidiUnavailableException {
 
 	  ReplacementMapPreprocessor rmp = ReplacementMapPreprocessor.getInstance();
 	  rmp.setReplacementMap(new SolfegeReplacementMap())

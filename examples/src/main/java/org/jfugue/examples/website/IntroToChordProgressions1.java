@@ -5,8 +5,10 @@ import org.jfugue.theory.Chord;
 import org.jfugue.theory.ChordProgression;
 import org.jfugue.theory.Note;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class IntroToChordProgressions1 {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws MidiUnavailableException {
     ChordProgression cp = new ChordProgression("I IV V");
     Chord[] chords = cp.setKey("C").getChords();
     for (Chord chord : chords) {

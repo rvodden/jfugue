@@ -5,8 +5,10 @@ import org.jfugue.pattern.Token;
 import org.jfugue.player.Player;
 import org.jfugue.theory.Note;
 
+import javax.sound.midi.MidiUnavailableException;
+
 public class CrabCanon {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MidiUnavailableException {
         // Upper melody of Bach�s Crab Canon
         Pattern melody1 = new Pattern("D5h E5h A5h Bb5h C#5h Rq A5q "+
                        "A5q Ab5h G5q G5q F#5h F5q F5q E5q Eb5q D5q "+

@@ -22,6 +22,7 @@ package org.jfugue.testtools.samplemidi;
 import java.io.File;
 import java.io.IOException;
 
+import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Sequence;
 
 import org.jfugue.midi.MidiFileManager;
@@ -32,7 +33,7 @@ import org.junit.Ignore;
 @Ignore
 public class CreateSpringMid 
 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MidiUnavailableException {
 	    // From 2008 JavaOne examples 
         Pattern repeated = new Pattern();
         repeated.add("V0 Cq+Eq Cq+Eq Cq+Eq Di Ci | Dh.+Gh.");

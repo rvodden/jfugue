@@ -41,14 +41,9 @@ public class ManagedPlayer implements EndOfTrackListener
 
 	private CopyOnWriteArrayList<ManagedPlayerListener> playerListeners;
     
-	public ManagedPlayer() {
+	public ManagedPlayer() throws MidiUnavailableException {
     	playerListeners = new CopyOnWriteArrayList<ManagedPlayerListener>();
-    	try {
-    		common = SequencerManager.getInstance();
-    	} catch (MidiUnavailableException e) {
-    		Logger.getLogger("org.jfugue").severe(e.getLocalizedMessage());
-        Logger.getLogger("org.jfugue").severe(e.getStackTrace().toString());
-    	}
+    	common = SequencerManager.getInstance();
     }
     
 	public void addManagedPlayerListener(ManagedPlayerListener listener) {

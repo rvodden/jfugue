@@ -37,6 +37,9 @@ jobs:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
+      - store_test_results:
+          paths:
+            - ~/repo/jfugue/test-results
 
       # run tests!
       - run: gradle jar

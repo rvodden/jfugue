@@ -39,7 +39,7 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # run tests!
-      - run: gradle jar
+      - run: gradle test jar
 
       - store_test_results:
           paths:

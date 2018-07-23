@@ -1,0 +1,98 @@
+group = 'com.vodden.music.jfugue'
+version = '5.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.3'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: "java-library"
+    apply plugin: "jacoco"
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    test {
+        reports {
+            junitXml.enabled = true
+            html.enabled = false
+        }
+    }
+
+    version = rootProject.version
+
+    jacocoTestReport {
+        reports {
+            xml.enabled = true
+            html.enabled = false
+        }
+    }
+
+    jar {
+
+
+        baseName = 'jfugue'
+
+        if ( project.name == "jfugue" ) {
+            manifest {
+                attributes('Implementation-Title': "${project.name}",
+                        'Implementation-Version': project.version)
+            }
+        } else {
+
+            appendix = project.name
+            manifest {
+                attributes('Implementation-Title': "${project.name}-${appendix}",
+                        'Implementation-Version': project.version)
+            }
+        }
+    }
+}
+
+project(':jfugue') {
+
+    dependencies {
+        implementation 'com.io7m.xom:xom:1.2.10'
+
+        testImplementation 'junit:junit:4.12'
+        testImplementation 'org.hamcrest:hamcrest-core:1.3'
+    }
+
+}
+
+project(':demo') {
+    dependencies {
+        implementation project(':jfugue')
+    }
+}
+
+project(':examples') {
+    dependencies {
+        implementation project(':jfugue')
+    }
+}
+
+project(':manualtest') {
+    dependencies {
+        implementation project(':jfugue')
+    }
+}
+
+project(':sample') {
+    dependencies {
+        implementation project(':jfugue')
+    }
+}

@@ -1,0 +1,2 @@
+include 'jfugue', 'manualtest', 'demo', 'examples', 'sample'
+rootProject.name = 'jfugue-root'

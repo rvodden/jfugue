@@ -39,10 +39,11 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
       - store_test_results:
           paths:
-            - ~/repo/jfugue/build/test-results
+            - ~/repo/jfugue/jfugue/build/test-results
 
       - store_artifacts:
-          path: ~/repo/build/jfugue/build/libs
+          paths:
+            - ~/repo/jfugue/jfugue/build/libs
 
 
       # run tests!

@@ -14,14 +14,14 @@ import javax.sound.midi.MidiUnavailableException;
 
 public class IntroToRhythms {
 
-   public static void main(String[] args) throws MidiUnavailableException {
+  public static void main(String[] args) throws MidiUnavailableException {
 
-	  Rhythm rhythm = new Rhythm().addLayer("O..oO...O..oOO..")
-								  .addLayer("..S...S...S...S.")
-								  .addLayer("````````````````")
-								  .addLayer("...............+");
+    Rhythm rhythm = new Rhythm().addLayer("O..oO...O..oOO..")
+        .addLayer("..S...S...S...S.")
+        .addLayer("````````````````")
+        .addLayer("...............+");
 
-	  new Player().play(rhythm.getPattern()
-							  .repeat(2));
-   }
+    new Player().play(rhythm.getPattern()
+        .repeat(2));
+  }
 }

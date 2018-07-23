@@ -12,10 +12,10 @@ public class IntroToChordProgressions1 {
     ChordProgression cp = new ChordProgression("I IV V");
     Chord[] chords = cp.setKey("C").getChords();
     for (Chord chord : chords) {
-      System.out.print("Chord "+chord+" has these notes: ");
+      System.out.print("Chord " + chord + " has these notes: ");
       Note[] notes = chord.getNotes();
       for (Note note : notes) {
-        System.out.print(note+" ");
+        System.out.print(note + " ");
       }
       System.out.println();
     }

@@ -3,13 +3,13 @@
  * http://www.jfugue.org
  *
  * Copyright (C) 2003-2014 David Koelle
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,83 +19,80 @@
 
 package org.jfugue.integration;
 
-import nu.xom.Attribute;
-import nu.xom.DocType;
-import nu.xom.Document;
-import nu.xom.Element;
-import nu.xom.Elements;
-
+import nu.xom.*;
 import org.jfugue.parser.ParserListener;
 import org.jfugue.theory.Chord;
 import org.jfugue.theory.Note;
 
 /**
- * This class is used to build a MusicXML file) given a 
- * MIDI Sequence, Music String, etc. 
+ * This class is used to build a MusicXML file) given a
+ * MIDI Sequence, Music String, etc.
  *
- *@author E.Philip Sobolik
+ * @author E.Philip Sobolik
  */
-public class MusicXmlParserListener implements ParserListener
-{	private Element	root;			//	top-level node of entire MusicXML Document
-	private Element elCurMeasure;	//	notes, etc. are added to this measure
-	private Element elPartList;		//	may need to add score-parts to this
-	private Element elCurScorePart;	//	may need to add instruments to this
-	private Element elCurPart;		//	current 'voice' add measures to this
-	private static final int MUSICXMLDIVISIONS = 4;	//	4 divisions per quarter note
-	private static final double WHOLE = 1024.0;
-	private static final double QUARTER = 256.0;
-    
-    public MusicXmlParserListener() {
-    	root = new Element("score-partwise");
-    
-    	Element elID = new Element("identification");
-    	Element elCreator = new Element("creator");
-    	elCreator.addAttribute(new Attribute("type", "software"));
-    	elCreator.appendChild("JFugue MusicXMLRenderer");
-    	elID.appendChild(elCreator);
-    	root.appendChild(elID);
-    
-    	//	add an empty score-part list here (before any parts are added)
-    	//	score-parts are added to this as they are generated
-    	elPartList = new Element("part-list");
-    	root.appendChild(elPartList);
-    }	
+public class MusicXmlParserListener implements ParserListener {
+  private static final int MUSICXMLDIVISIONS = 4;  //	4 divisions per quarter note
+  private static final double WHOLE = 1024.0;
+  private static final double QUARTER = 256.0;
+  private Element root;      //	top-level node of entire MusicXML Document
+  private Element elCurMeasure;  //	notes, etc. are added to this measure
+  private Element elPartList;    //	may need to add score-parts to this
+  private Element elCurScorePart;  //	may need to add instruments to this
+  private Element elCurPart;    //	current 'voice' add measures to this
 
-    /**
-     * creates the internal <code>Document</code> with the top-level 
-     * <code>Element</code> and then creates the MusicXML file (as a 
-     * string) from the internal <code>Document</code>
-     * @return the completed MusicXML file as a String
-     */
-    public String getMusicXMLString() {	
-    	return getMusicXMLDoc().toXML();
-    }
-    
-    /**
-     * creates the internal <code>Document</code> with the top-level 
-     * <code>Element</code>. 
-     * @return the completed MusicXML file as a <code>Document</code>
-     */
-    public Document getMusicXMLDoc() {
+  public MusicXmlParserListener() {
+    root = new Element("score-partwise");
+
+    Element elID = new Element("identification");
+    Element elCreator = new Element("creator");
+    elCreator.addAttribute(new Attribute("type", "software"));
+    elCreator.appendChild("JFugue MusicXMLRenderer");
+    elID.appendChild(elCreator);
+    root.appendChild(elID);
+
+    //	add an empty score-part list here (before any parts are added)
+    //	score-parts are added to this as they are generated
+    elPartList = new Element("part-list");
+    root.appendChild(elPartList);
+  }
+
+  /**
+   * creates the internal <code>Document</code> with the top-level
+   * <code>Element</code> and then creates the MusicXML file (as a
+   * string) from the internal <code>Document</code>
+   *
+   * @return the completed MusicXML file as a String
+   */
+  public String getMusicXMLString() {
+    return getMusicXMLDoc().toXML();
+  }
+
+  /**
+   * creates the internal <code>Document</code> with the top-level
+   * <code>Element</code>.
+   *
+   * @return the completed MusicXML file as a <code>Document</code>
+   */
+  public Document getMusicXMLDoc() {
 //       finishCurrentVoice();
 
-    	//	remove empty measures
-		Elements elDocParts = root.getChildElements("part");
-		for (int xP = 0; xP < elDocParts.size(); ++xP)
-		{	Element elDocPart = elDocParts.get(xP);
-			Elements elPartMeasures = elDocPart.getChildElements("measure");
-			for (int xM = 0; xM < elPartMeasures.size(); ++xM)
-				if (elPartMeasures.get(xM).getChildCount() < 1)
-					elDocPart.removeChild(xM);
-		}
-		//	create the Document
-		Document xomDoc = new Document(root);
-		DocType docType = new DocType("score-partwise",
-						"-//Recordare//DTD MusicXML 1.1 Partwise//EN",
-						"http://www.musicxml.org/dtds/partwise.dtd");
-		xomDoc.insertChild(docType, 0);
-		return xomDoc;
-    }	
+    //	remove empty measures
+    Elements elDocParts = root.getChildElements("part");
+    for (int xP = 0; xP < elDocParts.size(); ++xP) {
+      Element elDocPart = elDocParts.get(xP);
+      Elements elPartMeasures = elDocPart.getChildElements("measure");
+      for (int xM = 0; xM < elPartMeasures.size(); ++xM)
+        if (elPartMeasures.get(xM).getChildCount() < 1)
+          elDocPart.removeChild(xM);
+    }
+    //	create the Document
+    Document xomDoc = new Document(root);
+    DocType docType = new DocType("score-partwise",
+        "-//Recordare//DTD MusicXML 1.1 Partwise//EN",
+        "http://www.musicxml.org/dtds/partwise.dtd");
+    xomDoc.insertChild(docType, 0);
+    return xomDoc;
+  }
 
 //    public void doFirstMeasure(boolean bAddDefaults)
 //    {
@@ -512,28 +509,21 @@ public class MusicXmlParserListener implements ParserListener
 //		return( new Float((60.f * 240.f) / ppm) );
 //    }
 
-    
-    
-    
-    
-    
-    
-    
-    
-	@Override
-	public void beforeParsingStarts() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void afterParsingFinished() {
-		// TODO Auto-generated method stub
-		
-	}
+  @Override
+  public void beforeParsingStarts() {
+    // TODO Auto-generated method stub
 
-	@Override
-	public void onTrackChanged(byte track) {
+  }
+
+  @Override
+  public void afterParsingFinished() {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onTrackChanged(byte track) {
 //    	String sReqVoice = voice.getMusicString();
 //    	String sCurPartID = (elCurPart == null)
 //    							? null
@@ -572,89 +562,89 @@ public class MusicXmlParserListener implements ParserListener
 //    	//	note:  doesn't start a new measure if there
 //    	//			aren't any notes in the current measure
 //    	newMeasure();
-	}
+  }
 
-	@Override
-	public void onLayerChanged(byte layer) {
-	}
+  @Override
+  public void onLayerChanged(byte layer) {
+  }
 
-	@Override
-	public void onInstrumentParsed(byte instrument) {
-	}
+  @Override
+  public void onInstrumentParsed(byte instrument) {
+  }
 
-	@Override
-	public void onTempoChanged(int tempoBPM) {
-	}
+  @Override
+  public void onTempoChanged(int tempoBPM) {
+  }
 
-	@Override
-	public void onKeySignatureParsed(byte key, byte scale) {
-	}
+  @Override
+  public void onKeySignatureParsed(byte key, byte scale) {
+  }
 
-	@Override
-	public void onTimeSignatureParsed(byte numerator, byte denominator) {
-	}
+  @Override
+  public void onTimeSignatureParsed(byte numerator, byte denominator) {
+  }
 
-	@Override
-	public void onBarLineParsed(long id) {
-	}
+  @Override
+  public void onBarLineParsed(long id) {
+  }
 
-	@Override
-	public void onTrackBeatTimeBookmarked(String timeBookmarkId) {
-	}
+  @Override
+  public void onTrackBeatTimeBookmarked(String timeBookmarkId) {
+  }
 
-	@Override
-	public void onTrackBeatTimeBookmarkRequested(String timeBookmarkId) {
-	}
+  @Override
+  public void onTrackBeatTimeBookmarkRequested(String timeBookmarkId) {
+  }
 
-	@Override
-	public void onTrackBeatTimeRequested(double time) {
-	}
+  @Override
+  public void onTrackBeatTimeRequested(double time) {
+  }
 
-	@Override
-	public void onPitchWheelParsed(byte lsb, byte msb) {
-	}
+  @Override
+  public void onPitchWheelParsed(byte lsb, byte msb) {
+  }
 
-	@Override
-	public void onChannelPressureParsed(byte pressure) {
-	}
+  @Override
+  public void onChannelPressureParsed(byte pressure) {
+  }
 
-	@Override
-	public void onPolyphonicPressureParsed(byte key, byte pressure) {
-	}
+  @Override
+  public void onPolyphonicPressureParsed(byte key, byte pressure) {
+  }
 
-	@Override
-	public void onSystemExclusiveParsed(byte... bytes) {
-	}
+  @Override
+  public void onSystemExclusiveParsed(byte... bytes) {
+  }
 
-	@Override
-	public void onControllerEventParsed(byte controller, byte value) {
-	}
+  @Override
+  public void onControllerEventParsed(byte controller, byte value) {
+  }
 
-	@Override
-	public void onLyricParsed(String lyric) {
-	}
+  @Override
+  public void onLyricParsed(String lyric) {
+  }
 
-	@Override
-	public void onMarkerParsed(String marker) {
-	}
+  @Override
+  public void onMarkerParsed(String marker) {
+  }
 
-	@Override
-	public void onFunctionParsed(String id, Object message) {
-	}
+  @Override
+  public void onFunctionParsed(String id, Object message) {
+  }
 
-    @Override
-    public void onNotePressed(Note note) {
-    }
+  @Override
+  public void onNotePressed(Note note) {
+  }
 
-    @Override
-    public void onNoteReleased(Note note) {
-    }
+  @Override
+  public void onNoteReleased(Note note) {
+  }
 
-	@Override
-	public void onNoteParsed(Note note) {
-	}
+  @Override
+  public void onNoteParsed(Note note) {
+  }
 
-	@Override
-	public void onChordParsed(Chord chord) {
-	}
+  @Override
+  public void onChordParsed(Chord chord) {
+  }
 }

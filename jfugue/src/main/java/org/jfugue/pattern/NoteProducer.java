@@ -1,9 +1,9 @@
 package org.jfugue.pattern;
 
-import java.util.List;
-
 import org.jfugue.theory.Note;
 
+import java.util.List;
+
 public interface NoteProducer {
-    public List<Note> getNotes();
+  public List<Note> getNotes();
 }

@@ -15,24 +15,24 @@ import javax.sound.midi.MidiUnavailableException;
 
 public class IntroToChordProgressions {
 
-   public static void main(String[] args) throws MidiUnavailableException {
+  public static void main(String[] args) throws MidiUnavailableException {
 
-	  ChordProgression cp = new ChordProgression("I IV V");
+    ChordProgression cp = new ChordProgression("I IV V");
 
-	  Chord[] chords = cp.setKey("C")
-						 .getChords();
+    Chord[] chords = cp.setKey("C")
+        .getChords();
 
-	  for(Chord chord : chords){
-		 System.out.print("Chord " + chord + " has these notes: ");
-		 Note[] notes = chord.getNotes();
+    for (Chord chord : chords) {
+      System.out.print("Chord " + chord + " has these notes: ");
+      Note[] notes = chord.getNotes();
 
-		 for(Note note : notes){
-			System.out.print(note + " ");
-		 }
-		 System.out.println();
-	  }
+      for (Note note : notes) {
+        System.out.print(note + " ");
+      }
+      System.out.println();
+    }
 
-	  Player player = new Player();
-	  player.play(cp);
-   }
+    Player player = new Player();
+    player.play(cp);
+  }
 }

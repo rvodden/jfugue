@@ -49,7 +49,7 @@ subprojects {
     jar {
         baseName = 'jfugue'
 
-        if ( project.name == "jfugue" ) {
+        if (project.name == "jfugue") {
             manifest {
                 attributes('Implementation-Title': "${project.name}",
                         'Implementation-Version': project.version)
@@ -75,7 +75,7 @@ project(':jfugue') {
     }
 
     test {
-        if(project.hasProperty('test.skipAudioTests')) {
+        if (project.hasProperty('test.skipAudioTests')) {
             exclude '**/TemporalPLPTest.class'
             exclude '**/PlayerTest.class'
         }

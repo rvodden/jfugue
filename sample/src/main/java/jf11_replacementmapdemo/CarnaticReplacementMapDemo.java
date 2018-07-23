@@ -15,12 +15,12 @@ import javax.sound.midi.MidiUnavailableException;
 
 public class CarnaticReplacementMapDemo {
 
-   public static void main(String[] args) throws MidiUnavailableException {
+  public static void main(String[] args) throws MidiUnavailableException {
 
-	  ReplacementMapPreprocessor.getInstance()
-								.setReplacementMap(new CarnaticReplacementMap());
+    ReplacementMapPreprocessor.getInstance()
+        .setReplacementMap(new CarnaticReplacementMap());
 
-	  Player player = new Player();
-	  player.play("<S> <R1> <R2> <R3> <R4>");
-   }
+    Player player = new Player();
+    player.play("<S> <R1> <R2> <R3> <R4>");
+  }
 }

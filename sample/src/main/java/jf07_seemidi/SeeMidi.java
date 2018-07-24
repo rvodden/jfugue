@@ -3,10 +3,9 @@ package jf07_seemidi;
 import org.jfugue.midi.MidiFileManager;
 import org.jfugue.pattern.Pattern;
 
+import javax.sound.midi.InvalidMidiDataException;
 import java.io.File;
 import java.io.IOException;
-
-import javax.sound.midi.InvalidMidiDataException;
 
 /*	See the Contents of a MIDI File in Human-Readable and Machine-Parseable Staccato Format
 
@@ -18,10 +17,10 @@ import javax.sound.midi.InvalidMidiDataException;
 
 public class SeeMidi {
 
-   public static void main(String[] args) throws IOException, InvalidMidiDataException{
+  public static void main(String[] args) throws IOException, InvalidMidiDataException {
 
-	  String fileName = "PUT YOUR MIDI FILENAME HERE";
-	  Pattern pattern = MidiFileManager.loadPatternFromMidi(new File(fileName));
-	  System.out.println(pattern);
-   }
+    String fileName = "PUT YOUR MIDI FILENAME HERE";
+    Pattern pattern = MidiFileManager.loadPatternFromMidi(new File(fileName));
+    System.out.println(pattern);
+  }
 }

@@ -3,6 +3,8 @@ package jf05_rhythms;
 import org.jfugue.player.Player;
 import org.jfugue.rhythm.Rhythm;
 
+import javax.sound.midi.MidiUnavailableException;
+
 /*	Introduction to Rhythms
 	One of my favorite parts of the JFugue API is the ability to create rhythms
 	in a fun and easily understandable way.The letters are mapped to percussive
@@ -12,14 +14,14 @@ import org.jfugue.rhythm.Rhythm;
 
 public class IntroToRhythms {
 
-   public static void main(String[] args){
+  public static void main(String[] args) throws MidiUnavailableException {
 
-	  Rhythm rhythm = new Rhythm().addLayer("O..oO...O..oOO..")
-								  .addLayer("..S...S...S...S.")
-								  .addLayer("````````````````")
-								  .addLayer("...............+");
+    Rhythm rhythm = new Rhythm().addLayer("O..oO...O..oOO..")
+        .addLayer("..S...S...S...S.")
+        .addLayer("````````````````")
+        .addLayer("...............+");
 
-	  new Player().play(rhythm.getPattern()
-							  .repeat(2));
-   }
+    new Player().play(rhythm.getPattern()
+        .repeat(2));
+  }
 }

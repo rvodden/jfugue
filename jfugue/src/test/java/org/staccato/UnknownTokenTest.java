@@ -3,13 +3,13 @@
  * http://www.jfugue.org
  *
  * Copyright (C) 2003-2014 David Koelle
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,33 +20,33 @@
 package org.staccato;
 
 import org.jfugue.parser.ParserException;
-import org.jfugue.player.Player;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.sound.midi.MidiUnavailableException;
+
 /**
  * JFugue and Staccato should successfully ignore unknown tokens.
- * 
- * @author dkoelle
  *
+ * @author dkoelle
  */
 public class UnknownTokenTest {
-	private Player player;
-	
-	@Before
-	public void setup() {
-		this.player = new Player();
-	}
-	
-    @Test
-    public void testDefaultBehaviorForUnknownToken() {
-    	player.play("UNKNOWN");
-    }
+  private StaccatoParser parser;
 
-    @Test(expected=ParserException.class) 
-    public void testExceptionOnUnknownToken() {
-    	player.getStaccatoParser().setThrowsExceptionOnUnknownToken(true);
-    	player.play("UNKNOWN");
-    }
+  @Before
+  public void setup() throws MidiUnavailableException {
+    this.parser = new StaccatoParser();
+  }
+
+  @Test
+  public void testDefaultBehaviorForUnknownToken() {
+    parser.parse("UNKNOWN");
+  }
+
+  @Test(expected = ParserException.class)
+  public void testExceptionOnUnknownToken() {
+    parser.setThrowsExceptionOnUnknownToken(true);
+    parser.parse("UNKNOWN");
+  }
 
 }

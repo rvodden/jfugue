@@ -6,6 +6,7 @@ buildscript {
         mavenCentral()
         google()
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.3'
     }
@@ -17,49 +18,57 @@ allprojects {
         mavenLocal()
         mavenCentral()
     }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
 }
 
 subprojects {
-    apply plugin: "java-library"
-    apply plugin: "jacoco"
+    if (project.name != 'jfugue-android') {
+        apply plugin: "java-library"
+        apply plugin: "jacoco"
 
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
 
-    test {
-        reports {
-            junitXml.enabled = true
-            html.enabled = false
-        }
-    }
-
-    version = rootProject.version
-
-    jacocoTestReport {
-        reports {
-            xml.enabled = true
-            html.enabled = false
-        }
-    }
-
-    compileJava {
-        options.encoding = "UTF-8"
-    }
-
-    jar {
-        baseName = 'jfugue'
-
-        if (project.name == "jfugue") {
-            manifest {
-                attributes('Implementation-Title': "${project.name}",
-                        'Implementation-Version': project.version)
+        test {
+            reports {
+                junitXml.enabled = true
+                html.enabled = false
             }
-        } else {
+        }
 
-            appendix = project.name
-            manifest {
-                attributes('Implementation-Title': "${project.name}-${appendix}",
-                        'Implementation-Version': project.version)
+        version = rootProject.version
+
+        jacocoTestReport {
+            reports {
+                xml.enabled = true
+                html.enabled = false
+            }
+        }
+
+        compileJava {
+            options.encoding = "UTF-8"
+        }
+
+        jar {
+            baseName = 'jfugue'
+
+            if (project.name == "jfugue") {
+                manifest {
+                    attributes('Implementation-Title': "${project.name}",
+                            'Implementation-Version': project.version)
+                }
+            } else {
+
+                appendix = project.name
+                manifest {
+                    attributes('Implementation-Title': "${project.name}-${appendix}",
+                            'Implementation-Version': project.version)
+                }
             }
         }
     }
@@ -81,6 +90,33 @@ project(':jfugue') {
         }
     }
 }
+
+/*
+project(':jfugue-android') {
+    apply plugin: 'com.android.library'
+
+    repositories {
+        maven {
+            url 'https://github.com/kshoji/javax.sound.midi-for-Android/raw/master/javax.sound.midi/repository'
+        }
+        google()
+    }
+
+    dependencies{
+        implementation 'com.io7m.xom:xom:1.2.10'
+        implementation 'jp.kshoji:javax-sound-midi:0.0.3:@aar'
+    }
+
+    android {
+        compileSdkVersion = 23
+        defaultConfig {
+            minSdkVersion 12
+            targetSdkVersion 19
+        }
+    }
+
+}
+*/
 
 project(':demo') {
     dependencies {
